@@ -1,8 +1,9 @@
 from random import randint
+from functools import reduce
 import math
+import operator
 import sys
 import colorama
-from colorama import Fore, Back, Style
 
 class bcolors:
     HEADER = '\033[95m'
@@ -23,10 +24,14 @@ def get_factors(n):
 	return factors
 
 def is_prime(n):
-	return get_factors(n) == []
+	return get_factors(n) == [] and n != 1
 
 def clear_terminal():
 	print(chr(27) + "[2J")
+
+def prod(iterable):
+	return reduce(operator.mul, iterable, 1)
+
 
 if __name__ == "__main__":
 
@@ -49,15 +54,15 @@ if __name__ == "__main__":
 
 		print("")
 		print("")
-		print(Fore.BLUE + "*** Find the factors of " + str(x) + " ***")
+		print(colorama.Fore.BLUE + "*** Find the factors of " + str(x) + " ***")
 		print()
 		
-		while user_factors != factors:
+		while prod(user_factors) != x:
 
 			# print("user_factors = {0}".format(user_factors))
 			# print("factors = {0}".format(factors))
 
-			print(Style.RESET_ALL)
+			print(colorama.Style.RESET_ALL)
 
 			f = input("Enter a prime factor: ")
 			try:
@@ -69,22 +74,22 @@ if __name__ == "__main__":
 				continue
 
 			if not is_prime(f):
-				print(Fore.RED + "Sorry, that's not prime.  Try again!")
+				print(colorama.Fore.RED + "Sorry, that's not prime.  Try again!")
 				continue
 
 			if x % f == 0:
 				user_factors.append(f)
 				m2 = int(m / f)
-				print(Fore.BLUE + "Good!  {0}/{1} = {2}".format(m, f, m2))
+				print(colorama.Fore.BLUE + "Good!  {0}/{1} = {2}".format(m, f, m2))
 				m = m2
 			else:
-				print(Fore.RED + "Try again!")
+				print(colorama.Fore.RED + "Try again!")
 
 			user_factors.sort()
 
 		score = score + 1
 		print()
-		print(Fore.GREEN + "You found all the factors of {0}!".format(x))
+		print(colorama.Fore.GREEN + "You found all the factors of {0}!".format(x))
 		print("{0} = {1}".format(x, ' x '.join(str(f) for f in factors)))
 		print()
 		print("--------------- :-) :-D :-P ---------------- ")
