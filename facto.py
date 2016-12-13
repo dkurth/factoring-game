@@ -28,6 +28,8 @@ def is_prime(n):
 
 def clear_terminal():
 	print(chr(27) + "[2J")
+	for i in range(10):
+		print("")
 
 def prod(iterable):
 	return reduce(operator.mul, iterable, 1)
@@ -41,7 +43,15 @@ if __name__ == "__main__":
 	score = 0
 	max_num = 100
 
-	while True:
+	goal = input("How many numbers are we factoring today? ")
+	try:
+		goal = int(goal)
+	except:
+		print("That is invalid.")
+		sys.exit()
+
+
+	while goal > 0:
 		x = randint(0, max_num)
 		m = x # use this to show x after each factor is divided out
 		factors = get_factors(x)
@@ -51,6 +61,8 @@ if __name__ == "__main__":
 
 		if user_factors == factors: # prime
 			continue
+
+		goal -= 1
 
 		print("")
 		print("")
@@ -77,7 +89,8 @@ if __name__ == "__main__":
 				print(colorama.Fore.RED + "Sorry, that's not prime.  Try again!")
 				continue
 
-			if x % f == 0:
+			if m % f == 0:
+				print("x = {0}, f = {1}, x % f = {2}".format(x, f, x % f))
 				user_factors.append(f)
 				m2 = int(m / f)
 				print(colorama.Fore.BLUE + "Good!  {0}/{1} = {2}".format(m, f, m2))
