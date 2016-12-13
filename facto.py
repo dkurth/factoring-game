@@ -7,16 +7,6 @@ import operator
 import sys
 import colorama
 
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
 def get_factors(n):
     factors = []
     for i in range(2, n):
@@ -111,5 +101,5 @@ if __name__ == "__main__":
         print()
 
     ai = AsciiIncluder("art")
-    print(colorama.Fore.GREEN + ai.art["trogdor"])
+    ai.showAwesome('trogdor')
 
