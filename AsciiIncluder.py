@@ -83,4 +83,4 @@ class AsciiIncluder:
     # - trim whitespice around an images
     # - pad to a certain size
     # - flip
-    # - some way to crop instead of wrapping
+    # - some way to truncate instead of wrapping long lines

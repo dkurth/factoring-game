@@ -81,7 +81,6 @@ if __name__ == "__main__":
                 continue
 
             if m % f == 0:
-                print("x = {0}, f = {1}, x % f = {2}".format(x, f, x % f))
                 user_factors.append(f)
                 m2 = int(m / f)
                 print(colorama.Fore.BLUE + "Good!  {0}/{1} = {2}".format(m, f, m2))
@@ -101,5 +100,5 @@ if __name__ == "__main__":
         print()
 
     ai = AsciiIncluder("art")
-    ai.showAwesome('trogdor')
+    ai.showAwesome('dragon1')
 
